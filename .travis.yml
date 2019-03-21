@@ -1,0 +1,24 @@
+language: android
+
+# use container based build infrastructure
+sudo: false
+
+jdk:
+ - oraclejdk8
+
+android:
+  components:
+    - platform-tools
+    - tools
+    - build-tools-25.0.2
+    - android-25
+    - extra-google-google_play_services
+    - extra-google-m2repository
+    - extra-android-m2repository
+
+script:
+  - ./gradlew clean check -PdisablePreDex
+
+cache:
+  directories:
+    - $HOME/.gradle
